@@ -6,10 +6,10 @@ IF  EXISTS (
 )
 	DROP PROCEDURE AgregarHistoriaClinica
 GO
-CREATE PROCEDURE AgregarHistoriaClinica @ConsultaMedicaId INT, @Formula VARCHAR(200)
-,@Diagnostico  VARCHAR(200)
+CREATE PROCEDURE AgregarHistoriaClinica @ConsultaMedicaId INT, @Formula VARCHAR(500)
+,@Diagnostico  VARCHAR(500)
 ,@Descripcion  VARCHAR(700)
-,@Motivo  VARCHAR(50)
+,@Motivo  VARCHAR(550)
 AS 
 BEGIN 
 	UPDATE ConsultaMedica SET 	Formula = @Formula	,Diagnostico = @Diagnostico	,Descripcion = @Descripcion	,Motivo = @Motivo

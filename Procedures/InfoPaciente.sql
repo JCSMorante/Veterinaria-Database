@@ -17,7 +17,7 @@ BEGIN
 	,Especie
 	,Direccion
 	,Telefono
-	,TD.Nombre TipoDocumento
+	,TD.Id TipoDocumentoId
 	,Documento
 	,NombreDueño FROM Paciente P
 	INNER JOIN TipoDocumento TD ON P.ID = TD.ID

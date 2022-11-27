@@ -10,12 +10,16 @@ CREATE PROCEDURE AgendarCita @VeterinarioId INT, @PacienteId INT, @Fecha DATETIM
 AS 
 BEGIN 
 	SELECT 1 FROM ConsultaMedica WHERE VeterinarioId = @VeterinarioId AND Fecha = @Fecha
-	IF @@ROWCOUNT = 0
+	IF @@ROWCOUNT > 0
 		THROW 50005, N'El doctor esta ocupado', 1;
 
 	SELECT 1 FROM ConsultaMedica WHERE PacienteId = @PacienteId AND Fecha = @Fecha
-	IF @@ROWCOUNT = 0
+	IF @@ROWCOUNT > 0
 		THROW 50005, N'El paciente esta ocupado', 1;
 
+	IF @Fecha < GETDATE()
+		THROW 50005, N'Fecha invalida', 1;
+		
 	INSERT INTO ConsultaMedica VALUES(@Fecha, NULL, NULL, @PacienteId, @VeterinarioId, NULL, NULL, @SedeId)
 END
+GO

@@ -7,6 +7,15 @@ CREATE  DATABASE Veterinaria
 GO 
 USE Veterinaria
 GO
+USE master
+IF EXISTS(SELECT 1 FROM master.sys.databases 
+          WHERE name='Veterinaria')
+	DROP DATABASE Veterinaria
+GO
+CREATE  DATABASE Veterinaria
+GO 
+USE Veterinaria
+GO
 CREATE TABLE TipoDocumento (
  ID INT PRIMARY KEY NOT NULL IDENTITY,
  Nombre VARCHAR(50)
@@ -53,12 +62,12 @@ GO
 CREATE TABLE ConsultaMedica (
  ID INT PRIMARY KEY NOT NULL IDENTITY,
  Fecha DATETIME NOT NULL, 
- Formula VARCHAR(200),
- Diagnostico VARCHAR(200),
+ Formula VARCHAR(500),
+ Diagnostico VARCHAR(500),
  PacienteId INT NOT NULL,
  VeterinarioId INT NOT NULL,
  Descripcion VARCHAR(700),
- Motivo VARCHAR(50),
+ Motivo VARCHAR(550),
  SedeId INT NOT NULL,
  FOREIGN KEY (VeterinarioId) REFERENCES Veterinario(ID),
  FOREIGN KEY (SedeId) REFERENCES Sede(ID),
@@ -83,8 +92,7 @@ CREATE TABLE EspecialidadesXVeterinario (
 	FOREIGN KEY (EspecialidadId) REFERENCES Especialidades(ID),
 )
 GO
-
-INSERT INTO TipoDocumento VALUES('Cedula de ciudadania')
+INSERT INTO TipoDocumento VALUES('Cedula De Ciudadania')
 INSERT INTO TipoDocumento VALUES('Cedula Extranjera')
 INSERT INTO TipoDocumento VALUES('Tarjeta de identidad')
 
@@ -105,34 +113,34 @@ INSERT INTO Sede VALUES('3202884882', 'Calle Falsa 123', 'Sede 8')
 INSERT INTO Sede VALUES('3202884882', 'Calle Falsa 123', 'Sede 9')
 INSERT INTO Sede VALUES('3202884882', 'Calle Falsa 123', 'Sede 10')
 
-INSERT INTO Usuario VALUES('Pepe Vaticano', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Carlos Nombe', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Primiciero Calvo', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Martin Elias', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Brayan Vladimir', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Maritza Avenllaneda', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Marcela Catalan', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Alcocer Segundo', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Alvarado Abudinen', 1, 'Correo@correo.com', '101020201')
+INSERT INTO Usuario VALUES('Pepe Vaticano', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Carlos Nombe', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Primiciero Calvo', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Martin Elias', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Brayan Vladimir', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Maritza Avenllaneda', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Marcela Catalan', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Alcocer Segundo', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Alvarado Abudinen', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
 INSERT INTO Usuario VALUES('Yeraldine Abrias', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Karol Gomez', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Vicente Ferrari', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Ariel Sirenosa', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Reynel Leon', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Marco Polo', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Simon Bolibia', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Marta Santa', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Fry Andres', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Joe Calderon', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Thomas Suarez', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Amador Romero', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Marcarlos Gonzales', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Fortunato Montes', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Luz Marina', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Angel Jose', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Gregorio Morales', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Miranda Martinez', 1, 'Correo@correo.com', '101020201')
-INSERT INTO Usuario VALUES('Horacio Aleman', 1, 'Correo@correo.com', '101020201')
+INSERT INTO Usuario VALUES('Karol Gomez', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Vicente Ferrari', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Ariel Sirenosa', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Reynel Leon', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Marco Polo', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Simon Bolibia', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Marta Santa', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Fry Andres', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Joe Calderon', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Thomas Suarez', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Amador Romero', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Marcarlos Gonzales', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Fortunato Montes', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Luz Marina', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Angel Jose', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Gregorio Morales', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Miranda Martinez', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
+INSERT INTO Usuario VALUES('Horacio Aleman', 1, 'Correo@correo.com', CONVERT(varchar(50), Round(RAND() * 700004, 0)))
 
 INSERT INTO Veterinario VALUES(1)
 INSERT INTO Veterinario VALUES(2)
@@ -197,7 +205,6 @@ BEGIN
 	WHERE U.Documento = @Documento AND U.TipoDocumentoId = @TipoDocumento
 END
 GO
-
 IF  EXISTS (
 	SELECT * FROM sys.objects o
 	INNER JOIN sys.schemas s ON (s.schema_id = o.schema_id)
@@ -217,7 +224,7 @@ BEGIN
 	,Especie
 	,Direccion
 	,Telefono
-	,TD.Nombre TipoDocumento
+	,TD.Id TipoDocumentoId
 	,Documento
 	,NombreDueño FROM Paciente P
 	INNER JOIN TipoDocumento TD ON P.ID = TD.ID
@@ -251,11 +258,12 @@ GO
 CREATE PROCEDURE InfoVeterinario @TipoDocumento INT, @Documento VARCHAR(50)
 AS 
 BEGIN 
-	SELECT U.Nombre,TD.Nombre TipoDocumento ,Correo,Documento FROM Usuario U
+	SELECT U.Nombre,TD.ID TipoDocumento ,Correo,Documento FROM Usuario U
 	INNER JOIN TipoDocumento TD ON U.TipoDocumentoId = TD.ID
 	INNER JOIN Veterinario V ON U.ID = V.UsuarioId
 	WHERE U.Documento = @Documento AND TD.ID = @TipoDocumento
 END
+GO
 GO
 IF  EXISTS (
 	SELECT * FROM sys.objects o
@@ -309,13 +317,16 @@ CREATE PROCEDURE AgendarCita @VeterinarioId INT, @PacienteId INT, @Fecha DATETIM
 AS 
 BEGIN 
 	SELECT 1 FROM ConsultaMedica WHERE VeterinarioId = @VeterinarioId AND Fecha = @Fecha
-	IF @@ROWCOUNT = 0
+	IF @@ROWCOUNT > 0
 		THROW 50005, N'El doctor esta ocupado', 1;
 
 	SELECT 1 FROM ConsultaMedica WHERE PacienteId = @PacienteId AND Fecha = @Fecha
-	IF @@ROWCOUNT = 0
+	IF @@ROWCOUNT > 0
 		THROW 50005, N'El paciente esta ocupado', 1;
 
+	IF @Fecha < GETDATE()
+		THROW 50005, N'Fecha invalida', 1;
+		
 	INSERT INTO ConsultaMedica VALUES(@Fecha, NULL, NULL, @PacienteId, @VeterinarioId, NULL, NULL, @SedeId)
 END
 GO
@@ -365,10 +376,10 @@ IF  EXISTS (
 )
 	DROP PROCEDURE AgregarHistoriaClinica
 GO
-CREATE PROCEDURE AgregarHistoriaClinica @ConsultaMedicaId INT, @Formula VARCHAR(200)
-,@Diagnostico  VARCHAR(200)
+CREATE PROCEDURE AgregarHistoriaClinica @ConsultaMedicaId INT, @Formula VARCHAR(500)
+,@Diagnostico  VARCHAR(500)
 ,@Descripcion  VARCHAR(700)
-,@Motivo  VARCHAR(50)
+,@Motivo  VARCHAR(550)
 AS 
 BEGIN 
 	UPDATE ConsultaMedica SET 	Formula = @Formula	,Diagnostico = @Diagnostico	,Descripcion = @Descripcion	,Motivo = @Motivo
